@@ -1,0 +1,85 @@
+@use '../../variables/variables.scss' as *;
+
+.container{
+  width: 100%;
+  height: 100%;
+  background: $bg-container;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+}
+
+.container header{
+  width: 100%;
+  height: 72px;
+  background-color: $bg-header;
+  padding: 0 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  backdrop-filter: blur(4px);
+  position: fixed;
+}
+
+.container header div:first-child{
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.container header div:first-child h1{
+  font-size: 1.5rem;
+  color: whitesmoke;
+}
+
+.container header div:first-child svg{
+  width: 2rem;
+  height: 2rem;
+  color: $color-primary;
+}
+
+.container header div:last-child{
+  width: 256px;
+  height: 42px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+header div:last-child input{
+  width: 100%;
+  height: 100%;
+  border-radius: 0.375rem;
+  background: $color-secondary;
+  border: none;
+  outline: none;
+  padding: 0 2.5rem;
+  border: 1px solid #fff3;
+  color: whitesmoke;
+  font-size: 100%;
+  font-family: inherit;
+  position: absolute;
+  z-index: 2;
+}
+
+header div:last-child input:focus{
+  border: 1px solid $color-primary;
+}
+
+header div:last-child .label-wrapper{
+  padding-left: 1rem;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+header div:last-child .label-wrapper svg{
+  width: 1rem;
+  height: 1rem;
+  color: #9ca3af;
+}
+
+header div:last-child .label-wrapper label{
+  font-size: 1rem;
+  color: #9ca3af;
+  transition: opacity .2s ease-in-out;
+}

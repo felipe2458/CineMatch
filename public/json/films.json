@@ -1,0 +1,31 @@
+[
+  {
+    "title": "Oppenheimer",
+    "year": 2023,
+    "genre": ["Drama", "Biografia", "Histórico"],
+    "primaryGenre": "Drama",
+    "rating": 8.3,
+    "duration": "3h 0min",
+    "description": "A biografia do físico teórico J. Robert Oppenheimer e seu papel no desenvolvimento da bomba atômica durante a Segunda Guerra Mundial.",
+    "fullDescription": "Christopher Nolan nos apresenta a história épica de J. Robert Oppenheimer, o físico teórico americano que liderou o Projeto Manhattan durante a Segunda Guerra Mundial. O filme explora não apenas o desenvolvimento da bomba atômica, mas também as consequências morais e políticas dessa criação devastadora. Através de uma narrativa não linear, característica de Nolan, acompanhamos Oppenheimer desde seus dias como jovem cientista até se tornar uma das figuras mais controversas da história moderna. O filme examina profundamente os dilemas éticos enfrentados pelos cientistas envolvidos no projeto, as tensões políticas da era McCarthy e o peso da responsabilidade de criar uma arma capaz de destruir a humanidade. Com performances magistrais de Cillian Murphy no papel principal e um elenco de apoio excepcional, o filme combina espetáculo visual com profundidade emocional, questionando o preço do progresso científico e as responsabilidades que acompanham o conhecimento.",
+    "poster": "/placeholder.svg?height=400&width=300",
+    "backdrop": "/placeholder.svg?height=600&width=1200",
+    "category": "popular",
+    "director": "Christopher Nolan",
+    "cast": ["Cillian Murphy", "Emily Blunt", "Robert Downey Jr.", "Matt Damon", "Florence Pugh", "Rami Malek"],
+    "ageRating": "14+",
+    "country": "EUA",
+    "language": "Inglês",
+    "awards": ["Oscar de Melhor Filme", "Oscar de Melhor Diretor", "Oscar de Melhor Ator", "BAFTA de Melhor Filme"],
+    "streamingPlatforms": [
+      { "name": "Amazon Prime Video", "price": "Aluguel: R$ 14,90", "available": true, "url": "#" },
+      { "name": "Apple TV", "price": "Aluguel: R$ 16,90", "available": true, "url": "#" },
+      { "name": "Google Play", "price": "Aluguel: R$ 12,90", "available": true, "url": "#" },
+      { "name": "Paramount+", "price": "Incluído na assinatura", "available": true, "url": "#" },
+      { "name": "Netflix", "price": "Não disponível", "available": false, "url": "#" }
+    ],
+    "budget": "US$ 100 milhões",
+    "boxOffice": "US$ 952,8 milhões",
+    "productionCompany": "Universal Pictures"
+  }
+]

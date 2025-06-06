@@ -1,0 +1,23 @@
+<div class="container">
+  <header>
+    <div>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye h-8 w-8 text-purple-400">
+        <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+        <circle cx="12" cy="12" r="3"></circle>
+      </svg>
+
+      <h1>CineMatch</h1>
+    </div>
+
+    <div>
+      <input type="text" id="search" name="search" [(ngModel)]="search" (input)="searchMovies()"/>
+      <div class="label-wrapper">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search search-icon">
+          <circle cx="11" cy="11" r="8"></circle>
+          <path d="m21 21-4.3-4.3"></path>
+        </svg>
+        <label #searchLabel for="search">Buscar filmes...</label>
+      </div><!-- label-wrapper -->
+    </div>
+  </header>
+</div><!-- container -->
