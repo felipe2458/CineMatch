@@ -13,6 +13,7 @@ export class Home {
   @ViewChild('searchLabel') searchLabel!: ElementRef<HTMLLabelElement>;
 
   search: string = '';
+  category: string = 'all';
 
   searchMovies(){
     if(this.search.trim() === ''){
@@ -21,5 +22,11 @@ export class Home {
     }
 
     this.renderer.setStyle(this.searchLabel.nativeElement, 'opacity', 0);
+  }
+
+  changeCategory(event: Event){
+    const input = event.target as HTMLInputElement;
+
+    //console.log(input.value);
   }
 }

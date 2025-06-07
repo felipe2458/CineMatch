@@ -1,42 +1,52 @@
 @use '../../variables/variables.scss' as *;
 
-.container{
+main{
   width: 100%;
   height: 100%;
   background: $bg-container;
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
 }
 
-.container header{
+main > header{
   width: 100%;
-  height: 72px;
   background-color: $bg-header;
-  padding: 0 5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   backdrop-filter: blur(4px);
   position: fixed;
+  border-bottom: 1px solid $color-secondary;
 }
 
-.container header div:first-child{
+main > header .wrapper-content-header{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+main > header .wrapper-content-header .content-header{
+  width: 95%;
+  padding: 1rem 0;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+header .content-header div:first-child{
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-.container header div:first-child h1{
+header .content-header div:first-child h1{
   font-size: 1.5rem;
   color: whitesmoke;
 }
 
-.container header div:first-child svg{
+header .content-header div:first-child svg{
   width: 2rem;
   height: 2rem;
   color: $color-primary;
 }
 
-.container header div:last-child{
+header .content-header div:last-child{
   width: 256px;
   height: 42px;
   position: relative;
@@ -44,7 +54,7 @@
   align-items: center;
 }
 
-header div:last-child input{
+header .content-header div:last-child input{
   width: 100%;
   height: 100%;
   border-radius: 0.375rem;
@@ -60,11 +70,11 @@ header div:last-child input{
   z-index: 2;
 }
 
-header div:last-child input:focus{
+header .content-header div:last-child input:focus{
   border: 1px solid $color-primary;
 }
 
-header div:last-child .label-wrapper{
+header .content-header div:last-child .label-wrapper{
   padding-left: 1rem;
   position: absolute;
   display: flex;
@@ -72,14 +82,146 @@ header div:last-child .label-wrapper{
   gap: .5rem;
 }
 
-header div:last-child .label-wrapper svg{
+header .content-header div:last-child .label-wrapper svg{
   width: 1rem;
   height: 1rem;
-  color: #9ca3af;
+  color: $color-fifth;
 }
 
-header div:last-child .label-wrapper label{
+header .content-header div:last-child .label-wrapper label{
   font-size: 1rem;
-  color: #9ca3af;
+  color: $color-fifth;
   transition: opacity .2s ease-in-out;
+}
+
+main section.hero{
+  width: 100%;
+  height: 60%;
+  padding-top: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
+.hero .hero-wrapper{
+  width: 95%;
+  height: 50%;
+  text-align: center;
+}
+
+.hero .hero-wrapper h1{
+  color: whitesmoke;
+  font-size: 3.75rem;
+  padding-bottom: 2rem;
+}
+
+.hero .hero-wrapper h1 span{
+  background: $color-tertiary;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.hero .hero-wrapper p{
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 1.25rem;
+  color: $color-fourth;
+}
+
+main section.filter-wrapper{
+  width: 100%;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.filter-wrapper .filter-options,
+.filter-wrapper .filter-selected{
+  width: 90%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+}
+
+.filter-wrapper .filter-options{
+  gap: 1rem;
+}
+
+.filter-wrapper .filter-options .wrapper-title-filter-options{
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+.filter-wrapper .filter-options .wrapper-title-filter-options h3{
+  color: whitesmoke;
+  font-weight: 500;
+}
+
+.filter-wrapper .filter-options .wrapper-title-filter-options svg{
+  width: 1rem;
+  height: 1rem;
+  color: $color-fifth;
+}
+
+.filter-options .wrapper-filter-options select{
+  width: 10rem;
+  padding: .5rem;
+  color: whitesmoke;
+  background-color: $color-secondary;
+  border: 1px solid #fff3;
+  border-radius: .375rem;
+  outline: none;
+  text-transform: none;
+}
+
+.filter-options .wrapper-filter-options select option{
+  color: whitesmoke;
+  background-color: #1f2937;
+}
+
+.filter-selected{
+  gap: .5rem;
+}
+
+.filter-selected .input-select-wrapper input[type="radio"]{
+  display: none;
+}
+
+.filter-selected .input-select-wrapper input[type="radio"]:checked + label{
+  background-color: #7c3aed;
+  border-color: #7c3aed;
+}
+
+.filter-selected .input-select-wrapper input[type="radio"]:checked + label:hover{
+  background-color: #6d28d9;
+}
+
+.filter-selected .input-select-wrapper label{
+  padding: .5rem 1rem;
+  color: whitesmoke;
+  background-color: $color-secondary;
+  border: 1px solid #fff3;
+  cursor: pointer;
+  user-select: none;
+  border-radius: .375rem;
+  transition: background-color .2s ease-in-out;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+.filter-selected .input-select-wrapper label:hover{
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.filter-selected .input-select-wrapper label span{
+  padding: .125rem .5rem;
+  background-color: #fff3;
+  border-radius: .25rem;
+  font-size: .8rem;
+  margin: 0 0 0 .5rem;
 }
