@@ -1,1 +1,86 @@
-<p>card works!</p>
+<div class="container">
+  <header>
+    <header>
+      <div class="content-ageRating">
+        <h4>{{ film.ageRating }}</h4>
+      </div><!-- content-ageRating -->
+
+      <button (click)="favorite = !favorite">
+        <mat-icon [class.isfavorite]="favorite">
+          {{ favorite ? 'favorite' : 'favorite_border' }}
+        </mat-icon>
+      </button>
+    </header>
+
+    <footer>
+      <div class="rating content-infos">
+        <mat-icon>grade</mat-icon>
+        {{ film.rating }}
+      </div><!-- rating -->
+
+      <div class="year content-infos">
+        <mat-icon>calendar_today</mat-icon>
+        {{ film.year }}
+      </div><!-- year -->
+
+      <div class="duration content-infos">
+        <mat-icon>access_time</mat-icon>
+        {{ film.duration }}
+      </div><!-- duration -->
+    </footer>
+  </header>
+
+  <section class="content-more-infos">
+    <header class="title_and_genre">
+      <div class="title">
+        <h2>{{ film.title }}</h2>
+      </div><!-- title -->
+
+      <div class="genre-wrapper">
+        @for(genre of film.genre; track genre){
+          <div class="genre">
+            <p>{{ genre }}</p>
+          </div><!-- genre -->
+        }
+      </div><!-- genre -->
+    </header><!-- title_and_genre -->
+    <section class="director_and_cast">
+      <div class="director-wrapper">
+        <mat-icon>person_outline</mat-icon>
+        <h4><span>Diretor:</span> {{ film.director }}</h4>
+      </div><!-- director-wrapper -->
+
+      <div class="cast-wrapper">
+        <mat-icon>people_outline</mat-icon>
+        <div class="container-cast">
+          <h4><span>Elenco: </span></h4>
+
+          <div class="people-wrapper">
+            @for(cast of film.cast; track cast){
+              <div class="people">
+                <h5>{{ cast }}</h5>
+              </div><!-- people -->
+            }
+          </div><!-- people-wrapper -->
+        </div><!-- container-cast -->
+      </div><!-- cast-wrapper -->
+    </section><!-- director_and_cast -->
+
+    <section class="description">
+      <p>
+        {{ film.description }}
+      </p>
+    </section><!-- description -->
+
+    <section class="container-button-view">
+      <button>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye h-8 w-8 text-purple-400">
+          <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+          <circle cx="12" cy="12" r="3"></circle>
+        </svg>
+
+        <h5>Ver detalhes</h5>
+      </button>
+    </section><!-- container-button-view -->
+  </section><!-- content-more-infos -->
+</div><!-- container -->
