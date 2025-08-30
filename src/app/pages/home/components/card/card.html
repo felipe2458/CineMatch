@@ -5,9 +5,9 @@
         <h4>{{ film.ageRating }}</h4>
       </div><!-- content-ageRating -->
 
-      <button (click)="favorite = !favorite">
-        <mat-icon [class.isfavorite]="favorite">
-          {{ favorite ? 'favorite' : 'favorite_border' }}
+      <button (click)="changeFavorite();">
+        <mat-icon [class.isfavorite]="filmWithFavorite.favorite">
+          {{ filmWithFavorite.favorite ? 'favorite' : 'favorite_border' }}
         </mat-icon>
       </button>
     </header>

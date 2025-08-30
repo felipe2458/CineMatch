@@ -28,3 +28,12 @@ interface StreamingPlatform{
   available: boolean;
   url: string;
 }
+
+export interface FilmsWithFavorite extends Films{
+  favorite: boolean;
+}
+
+export interface getFavorites{
+  filmName: string;
+  favorite: boolean;
+}

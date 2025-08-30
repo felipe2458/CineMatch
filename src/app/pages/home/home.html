@@ -71,7 +71,7 @@
         <input type="radio" id="all-category" name="select-category" checked (change)="changeCategory($event)" value="all">
         <label for="all-category">
           <p>Todos</p>
-          <span>6</span>
+          <span>{{ allFilmsLength }}</span>
         </label>
       </div><!-- input-select-wrapper -->
 
@@ -79,7 +79,7 @@
         <input type="radio" id="favorites" name="select-category" (change)="changeCategory($event)" value="favorites">
         <label for="favorites">
           <p>Favoritos</p>
-          <span>6</span>
+          <span>{{ favoriteFilmsLength }}</span>
         </label>
       </div><!-- input-select-wrapper -->
 
@@ -87,7 +87,7 @@
         <input type="radio" id="popular" name="select-category" (change)="changeCategory($event)" value="popular">
         <label for="popular">
           <p>Popular</p>
-          <span>6</span>
+          <span>{{ popularFilmsLength }}</span>
         </label>
       </div><!-- input-select-wrapper -->
 
@@ -95,7 +95,7 @@
         <input type="radio" id="onTheRise" name="select-category" (change)="changeCategory($event)" value="onTheRise">
         <label for="onTheRise">
           <p>Em Alta</p>
-          <span>6</span>
+          <span>{{ onTheRiseFilmsLength }}</span>
         </label>
       </div><!-- input-select-wrapper -->
     </div><!-- filter-selected -->
@@ -103,7 +103,7 @@
 
   <section class="container-cards">
     @for(film of films; track film){
-      <app-card [film]="film"></app-card>
+      <app-card [film]="film" (changeFavoriteInp)="_changeFavorite()"></app-card>
     }
   </section><!-- container-cards -->
 

@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { GetData } from '../../services/get-data/get-data';
 import { Films } from '../../interface/interfaces';
 import { Card } from './components/card/card';
+import { LocalStorage } from '../../services/localStorage/local-storage';
 
 @Component({
   selector: 'app-home',
@@ -11,9 +12,20 @@ import { Card } from './components/card/card';
   styleUrl: './home.scss'
 })
 export class Home {
-  constructor(private renderer: Renderer2, private getDataService: GetData){
+  allFilmsLength: number = 0;
+  favoriteFilmsLength: number = 0;
+  popularFilmsLength: number = 0;
+  onTheRiseFilmsLength: number = 0;
+
+  constructor(private renderer: Renderer2, private getDataService: GetData, private localStorage: LocalStorage){
     this.getDataService.getFilms().subscribe(films => {
       this.films = films;
+
+      this.allFilmsLength = films.length;
+
+      this._filterPopularAndOnTheRiseFilms(films);
+
+      this._changeFavorite();
     });
   }
 
@@ -24,6 +36,30 @@ export class Home {
   films: Films[] = [];
 
   viewContributors: boolean = false;
+
+  _filterPopularAndOnTheRiseFilms(films: Films[]){
+    films.forEach(film => {
+      if(film.category.toLowerCase() === "popular"){
+        this.popularFilmsLength++;
+      }
+
+      if(film.category.toLowerCase() === "em alta"){
+        this.onTheRiseFilmsLength++;
+      }
+    });
+  }
+
+  _changeFavorite(){
+    let favLeng = 0;
+
+    this.localStorage.getFavorites().forEach((films) => {
+      if(films.favorite){
+        favLeng++;
+      }
+    })
+
+    this.favoriteFilmsLength = favLeng;
+  }
 
   @HostListener('window:keydown', ['$event'])
   showContributors(event: KeyboardEvent){
