@@ -81,7 +81,67 @@ export class Home {
     const input = event.target as HTMLInputElement;
 
     this.getDataService.getFilms().subscribe(films => {
-      console.log(films.length);
+      this.films = [];
+
+      switch(input.value){
+        case "all":
+          this.films = films;
+          break;
+        case "favorites":
+          const favorites = this.localStorage.getFavorites();
+          let favoritesFilms: string[] = [];
+
+          for(const fav of favorites){
+            for(const film of films){
+              if(film.title === fav.filmName && fav.favorite){
+                if(!favoritesFilms.includes(film.title)){
+                  favoritesFilms.push(film.title);
+                }
+              }
+            }
+          }
+
+          films.forEach(flm => {
+            if(favoritesFilms.includes(flm.title)){
+              this.films.push(flm);
+            }
+          });
+          break;
+        case "popular":
+          let popularFilms: string[] = [];
+
+          for(const film of films){
+            if(film.category.toLowerCase() === "popular"){
+              if(!popularFilms.includes(film.title)){
+                popularFilms.push(film.title);
+              }
+            }
+          }
+
+          films.forEach(flm => {
+            if(popularFilms.includes(flm.title)){
+              this.films.push(flm);
+            }
+          });
+          break;
+        case "onTheRise":
+          let onTheRiseFilms: string[] = [];
+
+          for(const film of films){
+            if(film.category.toLowerCase() === "em alta"){
+              if(!onTheRiseFilms.includes(film.title)){
+                onTheRiseFilms.push(film.title);
+              }
+            }
+          }
+
+          films.forEach(flm => {
+            if(onTheRiseFilms.includes(flm.title)){
+              this.films.push(flm);
+            }
+          });
+          break;
+      }
     });
   }
 }

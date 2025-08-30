@@ -2,7 +2,7 @@ Esse projeto é um trabalho escolar que o meu professor propôs. Ele não disse 
 
 Desenvolvimento: Felipe Alves;
 
-Colaboradores: Keyrrisson Ryan, Eduardo Rodrigues, Rafael Ribeiro, Bryan Domingos, Alisson william;
+Colaboradores: Keyrrisson Ryan, Rafael Ribeiro, Alisson william;
 
 Escola: CCMDF 507 Samambaia Sul;
 
