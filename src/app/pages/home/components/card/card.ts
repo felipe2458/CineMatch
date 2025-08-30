@@ -23,7 +23,10 @@ export class Card implements OnInit{
     this.localStorage.getFavorites().forEach((films) => {
       if(this.film.title === films.filmName){
         this._createFilmWithFavorite(films.favorite);
+        return;
       }
+
+      this._createFilmWithFavorite(false);
     });
   }
 
