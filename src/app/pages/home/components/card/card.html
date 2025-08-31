@@ -1,5 +1,5 @@
 <div class="container">
-  <header>
+  <header [ngStyle]="{'background-image': 'url(' + film.backdrop + ')'}">
     <header>
       <div class="content-ageRating">
         <h4>{{ film.ageRating }}</h4>

@@ -17,7 +17,19 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background: linear-gradient(to bottom, transparent, #0000007c);
+    background-size: cover;
+    background-position: center;
+
+    &::before{
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, transparent, #000000d7);
+      z-index: 5;
+      top: 0;
+      left: 0;
+    }
 
     header{
       width: 100%;
@@ -26,6 +38,8 @@
       align-items: center;
       justify-content: space-between;
       padding: 0 1rem;
+      position: relative;
+      z-index: 40;
 
       .content-ageRating{
         padding: .3rem .4rem;
@@ -40,12 +54,17 @@
       }
 
       button{
-        background: #0000006c;
+        background-color: #0000006c;
         border: none;
         cursor: pointer;
         border-radius: .2rem;
         width: 2rem;
         height: 2rem;
+        transition: background-color .2s ease-in-out;
+
+        &:hover{
+          background-color: #000000be;
+        }
 
         mat-icon{
           width: 100%;
@@ -72,6 +91,8 @@
       padding: 0 .5rem;
       color: whitesmoke;
       gap: 1rem;
+      position: relative;
+      z-index: 10;
 
       mat-icon{
         display: flex;

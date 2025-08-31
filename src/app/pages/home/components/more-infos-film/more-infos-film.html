@@ -1,7 +1,7 @@
 <div class="container" (click)="changeMoreInfosFilm.emit()" *ngIf="film">
   <div class="container-infos" (click)="$event.stopPropagation()">
     <header>
-      <div class="bg-image"></div><!-- bg-image -->
+      <div class="bg-image" [ngStyle]="{ 'background-image': 'url(' + '/' + film.backdrop + ')' }"></div><!-- bg-image -->
 
       <div class="close">
         <button (click)="changeMoreInfosFilm.emit()">
@@ -11,7 +11,7 @@
 
       <div class="sub-infos-wrapper">
         <div class="cover-wrapper">
-          <div class="cover"></div><!-- cover -->
+          <div class="cover" [ngStyle]="{ 'background-image': 'url(' + '/' + film.poster + ')' }"></div><!-- cover -->
         </div><!-- cover-wrapper -->
 
         <div class="sub-infos">
