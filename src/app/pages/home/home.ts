@@ -21,12 +21,15 @@ export class Home {
 
   moreInfosFilmSelected!: Films;
 
+  allFilms: Films[] = [];
+
   constructor(private renderer: Renderer2, private getDataService: GetData, private localStorage: LocalStorage){
     this.getDataService.getFilms().subscribe(films => {
       films.forEach(film => {
         film.cast.splice(4);
 
         this.films.push(film);
+        this.allFilms.push(film);
       })
 
       this.allFilmsLength = films.length;
@@ -96,11 +99,14 @@ export class Home {
 
   searchMovies(){
     if(this.search.trim() === ''){
+      this.films = this.allFilms;
       this.renderer.setStyle(this.searchLabel.nativeElement, 'opacity', 1);
       return;
     }
 
     this.renderer.setStyle(this.searchLabel.nativeElement, 'opacity', 0);
+
+    this.films = this.allFilms.filter(f => f.title.toLocaleLowerCase().includes(this.search.toLocaleLowerCase()));
   }
 
   changeCategory(event: Event){
