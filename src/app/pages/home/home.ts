@@ -1,13 +1,15 @@
-import { Component, ViewChild, ElementRef, Renderer2, HostListener } from '@angular/core';
+import { Component, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { GetData } from '../../services/get-data/get-data';
-import { Films } from '../../interface/interfaces';
+import { Films, MoreInfosFilmInter } from '../../interface/interfaces';
 import { Card } from './components/card/card';
 import { LocalStorage } from '../../services/localStorage/local-storage';
+import { MoreInfosFilm } from './components/more-infos-film/more-infos-film';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home',
-  imports: [FormsModule, Card],
+  imports: [FormsModule, Card, MoreInfosFilm, CommonModule],
   templateUrl: './home.html',
   styleUrl: './home.scss'
 })
@@ -17,9 +19,15 @@ export class Home {
   popularFilmsLength: number = 0;
   onTheRiseFilmsLength: number = 0;
 
+  moreInfosFilmSelected!: Films;
+
   constructor(private renderer: Renderer2, private getDataService: GetData, private localStorage: LocalStorage){
     this.getDataService.getFilms().subscribe(films => {
-      this.films = films;
+      films.forEach(film => {
+        film.cast.splice(4);
+
+        this.films.push(film);
+      })
 
       this.allFilmsLength = films.length;
 
@@ -36,6 +44,25 @@ export class Home {
   films: Films[] = [];
 
   viewContributors: boolean = false;
+
+  moreInfosFilmVal: MoreInfosFilmInter = {
+    display: false,
+    opacity: false
+  }
+
+  changeMoreInfosFilm(e: { film: Films} | null){
+    document.body.style.overflowY = this.moreInfosFilmVal.display ? "auto" : "hidden";
+
+    if(!this.moreInfosFilmVal.display){
+      this.moreInfosFilmSelected = e ? e.film : this.moreInfosFilmSelected;
+
+      this.moreInfosFilmVal.display = true;
+      setTimeout(() => this.moreInfosFilmVal.opacity = !this.moreInfosFilmVal.opacity), 200;
+    }else{
+      setTimeout(() => this.moreInfosFilmVal.display = false, 510);
+      this.moreInfosFilmVal.opacity = false;
+    }
+  }
 
   _filterPopularAndOnTheRiseFilms(films: Films[]){
     films.forEach(film => {
@@ -61,11 +88,10 @@ export class Home {
     this.favoriteFilmsLength = favLeng;
   }
 
-  @HostListener('window:keydown', ['$event'])
-  showContributors(event: KeyboardEvent){
-    if(event.ctrlKey && event.shiftKey && event.key.toLowerCase() === 'l'){
-      this.viewContributors = !this.viewContributors;
-    }
+  showContributors(){
+    this.viewContributors = !this.viewContributors;
+
+    document.body.style.overflowY = this.viewContributors ? 'hidden' : 'auto';
   }
 
   searchMovies(){
@@ -85,7 +111,11 @@ export class Home {
 
       switch(input.value){
         case "all":
-          this.films = films;
+          films.forEach(film => {
+            film.cast.splice(4);
+
+            this.films.push(film);
+          });
           break;
         case "favorites":
           const favorites = this.localStorage.getFavorites();
@@ -103,6 +133,8 @@ export class Home {
 
           films.forEach(flm => {
             if(favoritesFilms.includes(flm.title)){
+              flm.cast.splice(4);
+
               this.films.push(flm);
             }
           });
@@ -120,6 +152,8 @@ export class Home {
 
           films.forEach(flm => {
             if(popularFilms.includes(flm.title)){
+              flm.cast.splice(4);
+
               this.films.push(flm);
             }
           });
@@ -137,6 +171,8 @@ export class Home {
 
           films.forEach(flm => {
             if(onTheRiseFilms.includes(flm.title)){
+              flm.cast.splice(4);
+
               this.films.push(flm);
             }
           });

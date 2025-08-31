@@ -3,10 +3,12 @@
     <div class="wrapper-content-header">
       <div class="content-header">
         <div>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye h-8 w-8 text-purple-400">
-            <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
-            <circle cx="12" cy="12" r="3"></circle>
-          </svg>
+          <button (click)="showContributors();">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye h-8 w-8 text-purple-400">
+              <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+          </button>
 
           <h1>CineMatch</h1>
         </div>
@@ -103,13 +105,29 @@
 
   <section class="container-cards">
     @for(film of films; track film){
-      <app-card [film]="film" (changeFavoriteInp)="_changeFavorite()"></app-card>
+      <app-card
+        [film]="film"
+        (changeFavoriteInp)="_changeFavorite()"
+        (changeMoreInfosFilm)="changeMoreInfosFilm($event)"
+      ></app-card>
     }
   </section><!-- container-cards -->
 
+  <div class="container-moreInfos"
+    [ngStyle]="{
+      'display': moreInfosFilmVal.display ? 'block' : 'none',
+      'opacity': moreInfosFilmVal.opacity ? '1' : '0'
+    }"
+  >
+    <app-more-infos-film
+      [film]="moreInfosFilmSelected"
+      (changeMoreInfosFilm)="changeMoreInfosFilm(null)"
+    ></app-more-infos-film>
+  </div><!-- container-moreInfos -->
+
   @if(viewContributors){
     <div class="container-view-contributors">
-      <div class="overlay" (click)="viewContributors = !viewContributors"></div><!-- overlay -->
+      <div class="overlay" (click)="showContributors();"></div><!-- overlay -->
 
       <div class="view-contributors-wrapper">
         <header>

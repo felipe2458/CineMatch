@@ -8,7 +8,7 @@ main{
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
   position: relative;
 
-  >header{
+  > header{
     width: 100%;
     background-color: $bg-header;
     backdrop-filter: blur(4px);
@@ -38,10 +38,17 @@ main{
             color: whitesmoke;
           }
 
-          svg{
-            width: clamp(1.3rem, 3vw, 2rem);
-            height: clamp(1.3rem, 3vw, 2rem);
-            color: $color-primary;
+          button{
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            outline: none;
+
+            svg{
+              width: clamp(1.3rem, 3vw, 2rem);
+              height: clamp(1.3rem, 3vw, 2rem);
+              color: $color-primary;
+            }
           }
         }
 
@@ -247,17 +254,32 @@ main{
     row-gap: 2rem;
 
     app-card{
-      width: clamp(30%, 10vw, 30%);
+      width: clamp(21rem, 10vw, 30%);
       height: auto;
     }
   }
 
+  .container-moreInfos{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.692);
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity .5s ease-in-out;
+    z-index: 999999999999999999999;
+  }
+
   .container-view-contributors{
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
+    z-index: 999999999999999999999;
 
     .overlay{
       position: absolute;
@@ -266,7 +288,6 @@ main{
       background-color: #000000b0;
       top: 0;
       left: 0;
-      z-index: 1;
     }
 
     .view-contributors-wrapper{

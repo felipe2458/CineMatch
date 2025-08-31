@@ -16,7 +16,7 @@ export class LocalStorage {
 
       localStorage.setItem('favorites', JSON.stringify(favorites));
 
-      return
+      return;
     }
 
     const index = favorites.findIndex(fav => fav.filmName === filmName);

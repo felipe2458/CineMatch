@@ -14,19 +14,23 @@ export class Card implements OnInit{
   @Input() film!: Films;
 
   @Output() changeFavoriteInp = new EventEmitter<void>();
+  @Output() changeMoreInfosFilm = new EventEmitter<{film: Films}>();
 
   filmWithFavorite!: FilmsWithFavorite;
 
   constructor(private localStorage: LocalStorage) {}
 
   ngOnInit(): void {
-    this.localStorage.getFavorites().forEach((films) => {
-      if(this.film.title === films.filmName){
-        this._createFilmWithFavorite(films.favorite);
+    if(this.localStorage.getFavorites().length === 0){
+      this._createFilmWithFavorite(false);
+      return;
+    }
+
+    this.localStorage.getFavorites().forEach(film => {
+      if(this.film.title === film.filmName){
+        this._createFilmWithFavorite(film.favorite);
         return;
       }
-
-      this._createFilmWithFavorite(false);
     });
   }
 
@@ -42,5 +46,9 @@ export class Card implements OnInit{
     this.localStorage.addFavorite(this.filmWithFavorite.favorite, this.film.title);
 
     setTimeout(() => this.changeFavoriteInp.emit());
+  }
+
+  changeMoreInfosFilmEmit(){
+    this.changeMoreInfosFilm.emit({film: this.film});
   }
 }

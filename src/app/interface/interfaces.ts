@@ -37,3 +37,8 @@ export interface getFavorites{
   filmName: string;
   favorite: boolean;
 }
+
+export interface MoreInfosFilmInter{
+  display: boolean;
+  opacity: boolean;
+}

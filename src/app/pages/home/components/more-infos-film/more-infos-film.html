@@ -1,0 +1,194 @@
+<div class="container" (click)="changeMoreInfosFilm.emit()" *ngIf="film">
+  <div class="container-infos" (click)="$event.stopPropagation()">
+    <header>
+      <div class="bg-image"></div><!-- bg-image -->
+
+      <div class="close">
+        <button (click)="changeMoreInfosFilm.emit()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div><!-- close -->
+
+      <div class="sub-infos-wrapper">
+        <div class="cover-wrapper">
+          <div class="cover"></div><!-- cover -->
+        </div><!-- cover-wrapper -->
+
+        <div class="sub-infos">
+          <div class="name-wrapper">
+            <h1>{{ film.title }}</h1>
+          </div><!-- name-wrapper -->
+
+          <div class="infos-wrapper">
+            <div class="info">
+              <mat-icon>grade</mat-icon>
+              <h3>{{  film.rating }}</h3>
+            </div><!-- info -->
+
+            <span>•</span>
+
+            <div class="info">
+              <h3>{{ film.year }}</h3>
+            </div><!-- info -->
+
+            <span>•</span>
+
+            <div class="info">
+              <h3>{{ film.duration }}</h3>
+            </div><!-- info -->
+
+            <span>•</span>
+
+            <div class="info">
+              <h3>{{ film.ageRating }}</h3>
+            </div><!-- info -->
+          </div><!-- infos-wrapper -->
+
+          <div class="genre-wrapper">
+            @for(genre of film.genre; track genre){
+              <div class="genre">
+                <p>{{ genre }}</p>
+              </div><!-- genre -->
+            }
+          </div><!-- genre-wrapper -->
+        </div><!-- sub-infos -->
+      </div><!-- sub-infos-wrapper -->
+    </header>
+
+    <section class="container-more-infos">
+      <div class="more-infos">
+        <div class="sinopse-wrapper">
+          <header class="header-all">
+            <h2>Sinopse</h2>
+          </header>
+
+          <div class="sinopse">
+            <p>{{ film.fullDescription }}</p>
+          </div><!-- sinopse -->
+        </div><!-- sinopse-wrapper -->
+
+        <div class="cast-wrapper">
+          <header class="header-all">
+            <h2>Elenco e equipe</h2>
+          </header>
+
+          <div class="container-ref-cast">
+            <div class="content-people">
+              <mat-icon>person_outline</mat-icon>
+              <h4>Diretor:</h4>
+              <h3>{{ film.director }}</h3>
+            </div><!-- director-wrapper -->
+
+            <div class="content-people">
+              <mat-icon>person_outline</mat-icon>
+              <h4>Elenco:</h4>
+            </div><!-- cast-wrapper -->
+          </div><!-- container-ref-cast -->
+
+          <div class="container-cast">
+            @for(cast of film.cast; track cast){
+              <div class="people">
+                <p>{{ cast }}</p>
+              </div><!-- people -->
+            }
+          </div><!-- container-cast -->
+        </div><!-- cast-wrapper -->
+
+        <div class="container-awards">
+          <header class="header-all">
+            <h2>Prêmios</h2>
+          </header>
+
+          @for(award of film.awards; track award){
+            <div class="award-wrapper">
+              <mat-icon>workspace_premium</mat-icon>
+              <h4>{{ award }}</h4>
+            </div><!-- award-wrapper -->
+          }
+        </div><!-- container-awards -->
+      </div><!-- more-infos -->
+
+      <aside>
+        <div class="container-streaming-platforms">
+          <header class="header-all">
+            <h2>Onde assistir</h2>
+          </header>
+
+          @for(streamingPlatform of film.streamingPlatforms; track streamingPlatform){
+            <div class="streaming-platforms-wrapper">
+              <div class="streaming-platform">
+                <div class="check-wrapper">
+                  <mat-icon
+                   [ngClass]="{'check': streamingPlatform.available}">
+                    {{ streamingPlatform.available ? 'check' : 'close' }}
+                  </mat-icon>
+                </div><!-- check-wrapper -->
+
+                <div class="streaming-infos">
+                  <div class="name">
+                    <h4>{{ streamingPlatform.name }}</h4>
+                  </div><!-- name -->
+
+                  <div class="purchase-options">
+                    <p
+                      [ngClass]="{'available': streamingPlatform.available}"
+                    >
+                      {{ streamingPlatform.price }}
+                    </p>
+                  </div><!-- purchase-options -->
+                </div><!-- streaming-infos -->
+
+                @if(streamingPlatform.available){
+                  <div class="containerButtonGoToPlatform">
+                    <a [href]="streamingPlatform.url">Assistir</a>
+                  </div><!-- containerButtonGoToPlatform -->
+                }
+              </div><!-- streaming-platforms -->
+            </div><!-- streaming-platforms-wrapper -->
+          }
+        </div><!-- container-streaming-platforms -->
+
+        <div class="container-details">
+          <header class="header-all">
+            <h2>Detalhes</h2>
+          </header>
+
+          <div class="details-wrapper">
+            <div class="country_and_lenguage border-bottom">
+              <div class="count-leng">
+                <mat-icon>public</mat-icon>
+                <p><span>País:</span> {{ film.country }}</p>
+              </div><!-- count-leng -->
+
+              <div class="count-leng">
+                <mat-icon>translate</mat-icon>
+                <p><span>Idioma:</span> {{ film.language }}</p>
+              </div><!-- count-leng -->
+            </div><!-- country_and_lenguage -->
+
+            <div class="budget_and_boxOffice_and_productionCompany">
+              <div class="bbpc border-bottom">
+                <h4>Orçamento:</h4>
+                <h4>{{ film.budget }}</h4>
+              </div><!-- bbpc -->
+
+              <div class="bbpc border-bottom">
+                <h4>Bilheteria:</h4>
+                <h4>{{ film.boxOffice }}</h4>
+              </div><!-- bbpc -->
+
+              <div class="bbpc">
+                <h4>Produtora:</h4>
+                <h4
+                 [ngClass]="{ 'minor': minorPC }"
+                 [innerHTML]="minorPC ? productionCompany : film.productionCompany"
+                >
+                </h4>
+              </div><!-- bbpc -->
+            </div><!-- budget_and_boxOffice_and_productionCompany -->
+          </div><!-- details-wrapper -->
+        </div><!-- container-details -->
+      </aside>
+    </section><!-- container-more-infos -->
+  </div><!-- container-infos -->
+</div><!-- container -->
