@@ -113,7 +113,11 @@ export class Home {
     const input = event.target as HTMLInputElement;
 
     this.getDataService.getFilms().subscribe(films => {
+      this.search = '';
+      this.searchMovies();
+
       this.films = [];
+      this.allFilms = [];
 
       switch(input.value){
         case "all":
@@ -121,6 +125,7 @@ export class Home {
             film.cast.splice(4);
 
             this.films.push(film);
+            this.allFilms.push(film);
           });
           break;
         case "favorites":
@@ -142,6 +147,7 @@ export class Home {
               flm.cast.splice(4);
 
               this.films.push(flm);
+              this.allFilms.push(flm);
             }
           });
           break;
@@ -161,6 +167,7 @@ export class Home {
               flm.cast.splice(4);
 
               this.films.push(flm);
+              this.allFilms.push(flm);
             }
           });
           break;
@@ -180,6 +187,7 @@ export class Home {
               flm.cast.splice(4);
 
               this.films.push(flm);
+              this.allFilms.push(flm);
             }
           });
           break;

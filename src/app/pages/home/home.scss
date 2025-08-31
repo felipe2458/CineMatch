@@ -73,6 +73,7 @@ main{
             font-family: inherit;
             position: absolute;
             z-index: 2;
+            transition: border-color .2s ease-in-out;
 
             &:focus{
               border: 1px solid $color-primary;

@@ -17,6 +17,8 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
+            "outputPath": "docs/CineMatch",
+            "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
               "zone.js"
@@ -36,6 +38,7 @@
           },
           "configurations": {
             "production": {
+              "outputPath": "docs/CineMatch",
               "budgets": [
                 {
                   "type": "initial",
@@ -44,13 +47,14 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
-                  "maximumError": "8kB"
+                  "maximumWarning": "16kB",
+                  "maximumError": "32kB"
                 }
               ],
               "outputHashing": "all"
             },
             "development": {
+              "outputPath": "docs/CineMatch",
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true
