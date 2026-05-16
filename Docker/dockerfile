@@ -1,0 +1,7 @@
+FROM node:20-alpine
+WORKDIR /app
+RUN npm install -g @angular/cli
+RUN ng analytics disable --global
+COPY package*.json ./
+RUN npm install
+CMD ["npm","start"]

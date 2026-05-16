@@ -1,0 +1,13 @@
+services:
+  angular:
+    build:
+      context: ..
+      dockerfile: Docker/dockerfile
+    container_name: cine_match_dev
+    volumes:
+      - ..:/app
+      - /app/node_modules
+    ports:
+      - "4200:4200"
+    stdin_open: true
+    tty: true
